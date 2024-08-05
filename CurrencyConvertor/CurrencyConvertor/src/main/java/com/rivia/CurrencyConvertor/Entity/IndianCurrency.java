@@ -1,2 +1,5 @@
-package com.rivia.CurrencyConvertor.Entity;public class IndianCurreny {
+package com.rivia.CurrencyConvertor.Entity;
+
+public class IndianCurrency {
+
 }

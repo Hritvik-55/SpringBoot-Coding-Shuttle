@@ -1,15 +1,19 @@
 package com.application.uberApp.strategies.Impl;
 
-import com.application.uberApp.dto.DriverDTO;
-import com.application.uberApp.dto.RideRequestDTO;
-import com.application.uberApp.strategies.DriveMatchingStartegy;
+import com.application.uberApp.entities.Driver;
+import com.application.uberApp.entities.RideRequest;
+import com.application.uberApp.repositories.DriverRepository;
+import com.application.uberApp.strategies.DriverMatchingStartegy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class DriverMatchingNearestDriver implements DriveMatchingStartegy {
+@RequiredArgsConstructor
+public class DriverMatchingNearestDriver implements DriverMatchingStartegy {
+    private final DriverRepository driverRepository;
     @Override
-    public List<DriverDTO> findMatchingDrivers(RideRequestDTO rideRequestDTO) {
-        return null;
+    public List<Driver> findMatchingDrivers(RideRequest rideRequest) {
+        return driverRepository.findTenNearestDrivers(rideRequest.getPickUpLocation());
     }
 }
